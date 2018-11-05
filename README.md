@@ -38,6 +38,8 @@ echo -e "\nThe decrypted password will appear in the output below:\n"
 echo -n $EPW | xxd -r -p | openssl enc -des3 -nosalt -nopad -K "${KIV[0]}" -iv "${KIV[1]}" -d | hexdump -Cv
 ```
 
+## Method for recovering passwords from Gnome keyring
+
 **Step 1**
 
 The assumption is that you already have a low-priv shell as some user on the target system that has Remmina configuration files.
