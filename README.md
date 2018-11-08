@@ -1,7 +1,7 @@
 # RemmiRip
 Lifting Remmina Credentials from Gnome Keyring
 
-Remmina is a popular multipurpose remote desktop client for Linux capable of supporting RDP, VNC, SSH and more.  This article will describe how to recover a user's stored Reminna credentials from the Gnome keyring once a low-priv shell is obtained during a pentest.  Credentials obtained this way would allow lateral movement and privilege escalation on additional systems.
+Remmina is a popular multipurpose remote desktop client for Linux capable of supporting RDP, VNC, SSH and more.  This article describes how to recover a user's stored Reminna credentials from the Gnome keyring once a low-priv shell is obtained during a pentest.  Credentials obtained this way would allow lateral movement and privilege escalation on additional systems.
 
 https://remmina.org/
 
